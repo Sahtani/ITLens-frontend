@@ -1,1 +1,33 @@
-<p>survey-list works!</p>
+<div>
+  <h2>List of surveys</h2>
+  <ul>
+    @for (survey of surveys; track survey.title) {
+      <li>{{ survey.title }}</li>
+      <li>{{ survey.description }}</li>
+      <li>{{survey.owner.name}}</li>
+    }
+  </ul>
+
+  <div class="pagination">
+    <button [disabled]="currentPage === 0" (click)="changePage(currentPage - 1)">
+      Précédent
+    </button>
+
+    @for (page of pages; track page) {
+      <button
+        [class.active]="page === currentPage"
+        (click)="changePage(page)">
+        {{page + 1}}
+      </button>
+    }
+
+    <button [disabled]="currentPage === totalPages - 1" (click)="changePage(currentPage + 1)">
+      Suivant
+    </button>
+  </div>
+
+  <div class="pagination-info">
+    Page {{currentPage + 1}} sur {{totalPages}}
+    (Total: {{totalElements}} éléments)
+  </div>
+</div>

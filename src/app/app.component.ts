@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { SurveyListComponent } from './features/components/survey/survey-list/survey-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [SurveyListComponent],
+  template: `<app-survey-list></app-survey-list>`,
+  standalone: true,
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ITLens-frontend';
+  // title = 'ITLens-frontend';
 }
