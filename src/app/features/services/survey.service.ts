@@ -20,7 +20,9 @@ export class  SurveyService{
   getSurveyById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`)
 
-
+  }
+  addSurvey(newSurvey: Survey): Observable<Survey> {
+    return this.http.post<Survey>(`${this.apiUrl}/surveys`, newSurvey);
   }
 
 }
