@@ -6,5 +6,6 @@ export interface Survey{
   title: string;
   description: string;
    owner: Owner;
+  surveyEditions: SurveyEdition[];
 
 }

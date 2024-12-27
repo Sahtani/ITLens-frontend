@@ -6,6 +6,5 @@ export interface SurveyEdition{
   creationDate: Date;
   startDate: Date;
   year: Date;
-  survey: Survey;
 
 }

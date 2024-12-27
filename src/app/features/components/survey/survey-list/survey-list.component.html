@@ -1,44 +1,86 @@
 <div class="card-container">
   <h2>List of Surveys</h2>
+
   <div class="card-grid">
-    @for (survey of surveys; track survey.title) {
+    @for (survey of surveys; track survey.id) {
       <div class="card">
         <h3>{{ survey.title }}</h3>
         <p><strong>Description:</strong> {{ survey.description }}</p>
-        <p><strong>Owner:</strong> {{ survey.owner.name }}</p>
-        <app-button
-          label="Ajouter"
-          class="primary"
-          (onClick)="addSurvey()">
-        </app-button>
 
-        <app-button
-          label="Supprimer"
-          class="secondary"
-          [disabled]="isDeleting"
-          (onClick)="deleteSurvey()">
-        </app-button>
+        <div class="flex flex-wrap gap-2">
+          @if (survey .surveyEditions?.length) {
+            @for (edition of survey.surveyEditions; track edition.id) {
+              <button
+                type="button"
+                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none
+                       bg-white rounded-full border border-gray-200 hover:bg-gray-100
+                       hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100
+                       dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400
+                       dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              >
+                {{ edition.year }}
+            <!--    {{ edition.creationDate | date }}-->
+              </button>
+            }
+          } @else {
+            <p>No editions available</p>
+          }
+        </div>
 
+        <div class="button-group flex justify-end">
+          <app-button
+            label="Add"
+            class="primary"
+            (onClick)="addSurvey()"
+          ></app-button>
+
+        <!--  <app-button
+            label="Delete"
+            class="secondary"
+            [disabled]="isDeleting"
+            (onClick)="deleteSurvey(survey.id)"
+          ></app-button>-->
+        </div>
       </div>
     }
   </div>
+
+  @if (surveys?.length === 0) {
+    <div class="empty-state">
+      <p>No surveys available</p>
+    </div>
+  }
+
   <div class="pagination">
-    <button [disabled]="currentPage === 0" (click)="changePage(currentPage - 1)">
-      Précédent
+    <button
+      [disabled]="currentPage === 0"
+      (click)="changePage(currentPage - 1)"
+      class="pagination-button"
+    >
+      Previous
     </button>
+
     @for (page of pages; track page) {
       <button
         [class.active]="page === currentPage"
-        (click)="changePage(page)">
-        {{page + 1}}
+        (click)="changePage(page)"
+        class="pagination-button"
+      >
+        {{ page + 1 }}
       </button>
     }
-    <button [disabled]="currentPage === totalPages - 1" (click)="changePage(currentPage + 1)">
-      Suivant
+
+    <button
+      [disabled]="currentPage === totalPages - 1"
+      (click)="changePage(currentPage + 1)"
+      class="pagination-button"
+    >
+      Next
     </button>
   </div>
+
   <div class="pagination-info">
-    Page {{currentPage + 1}} sur {{totalPages}}
-    (Total: {{totalElements}} éléments)
+    Page {{ currentPage + 1 }} of {{ totalPages }}
+    (Total: {{ totalElements }} items)
   </div>
 </div>
