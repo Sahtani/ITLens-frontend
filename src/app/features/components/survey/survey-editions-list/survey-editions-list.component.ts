@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Subject} from '../../../../subject.model';
-import {ActivatedRoute, Router} from '@angular/router';
+import {SurveyEdition} from '../../../models/survey-edition.model';
 
 @Component({
   selector: 'app-survey-editions-list',
@@ -8,7 +8,5 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrl: './survey-editions-list.component.css'
 })
 export class SurveyEditionsListComponent {
-
-
-
+  @Input() editions: SurveyEdition[] = [];
 }

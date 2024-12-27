@@ -1,36 +1,11 @@
-<div class="container mx-auto p-4">
-  <div class="mb-4">
-    <button
-      (click)="goBack()"
-      class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center gap-2"
-    >
-      <span>← Retour aux surveys</span>
-    </button>
-  </div>
+<div class="mb-4">
+  @if (survey.surveyEditions && survey.surveyEditions.length > 0) {
+    <div class="flex flex-wrap gap-2">
+      @for (edition of survey.surveyEditions; track edition.year) {
 
-  <div class="bg-white rounded-lg shadow p-6">
-    <h2 class="text-2xl font-bold mb-4">Edition {{ editionDetails?.year }}</h2>
-
-    @if (subjects?.length) {
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        @for (subject of subjects; track subject.id) {
-          <app-survey-edition-item
-            [subject]="subject"
-            (editSubject)="onEditSubject($event)"
-            (deleteSubject)="onDeleteSubject($event)"
-          ></app-survey-edition-item>
-        }
-      </div>
-    } @else {
-      <div class="text-center py-8">
-        <p class="text-gray-500">Aucun subject disponible pour cette édition</p>
-        <button
-          (click)="addNewSubject()"
-          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Ajouter un subject
-        </button>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  } @else {
+    <p class="text-gray-500 dark:text-gray-400">No editions available</p>
+  }
 </div>
