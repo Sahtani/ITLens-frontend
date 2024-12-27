@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { Survey } from '../models/survey.model';
-import { PageResponse } from '../../core/interfaces/pagination.interface';
-import { SurveyDTO } from '../../dto/survey.dto';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Survey} from '../models/survey.model';
+import {PageResponse} from '../../core/interfaces/pagination.interface';
 
 @Injectable({
   providedIn: 'root',

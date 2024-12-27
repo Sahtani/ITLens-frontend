@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Survey } from '../../../models/survey.model';
 import { SurveyService } from '../../../services/survey.service';
-import { DatePipe, NgForOf } from '@angular/common';
 import { PageResponse } from '../../../../core/interfaces/pagination.interface';
 import { ButtonComponent } from '../../../../shared/button/button.component';
-import { SurveyDTO } from '../../../../dto/survey.dto';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
-  standalone: true,
-  imports: [NgForOf, ButtonComponent, DatePipe],
   styleUrls: ['./survey-list.component.css'],
 })
 export class SurveyListComponent implements OnInit {
@@ -62,7 +58,7 @@ export class SurveyListComponent implements OnInit {
     }
   }
 
-  addSurvey(): void {
+  /*addSurvey(): void {
     this.surveyService.addSurvey(this.newSurvey).subscribe({
       next: () => {
         this.loadSurveys();
@@ -84,5 +80,12 @@ export class SurveyListComponent implements OnInit {
         name: '',
       },
     };
+  }*/
+  addSurvey(): void {
+    console.log('Add survey clicked!');
+  }
+
+  deleteSurvey(surveyId: number): void {
+    console.log(`Delete survey with ID: ${surveyId}`);
   }
 }
