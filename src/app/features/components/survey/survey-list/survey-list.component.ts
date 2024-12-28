@@ -3,11 +3,15 @@ import { Survey } from '../../../models/survey.model';
 import { SurveyService } from '../../../services/survey.service';
 import { PageResponse } from '../../../../core/interfaces/pagination.interface';
 import { ButtonComponent } from '../../../../shared/button/button.component';
+import {SurveyItemComponent} from '../survey-item/survey-item.component';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
+  standalone: true,
+  imports: [CommonModule, SurveyItemComponent]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[] = [];

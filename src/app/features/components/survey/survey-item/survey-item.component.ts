@@ -1,9 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Survey} from '../../../models/survey.model';
+import {CommonModule} from '@angular/common';
+import {SurveyEditionsListComponent} from '../survey-editions-list/survey-editions-list.component';
 
 @Component({
   selector: 'app-survey-item',
   templateUrl: './survey-item.component.html',
+  standalone: true,
+  imports: [CommonModule, SurveyEditionsListComponent],
   styleUrl: './survey-item.component.css'
 })
 export class SurveyItemComponent {

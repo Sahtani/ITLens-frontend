@@ -1,8 +1,8 @@
-<div class="mb-4">
-  @if (survey.surveyEditions && survey.surveyEditions.length > 0) {
+<div class="survey-edition-list   mb-4">
+  @if (editions && editions.length > 0) {
     <div class="flex flex-wrap gap-2">
-      @for (edition of survey.surveyEditions; track edition.year) {
-
+      @for (edition of editions; track edition.id) {
+        <app-survey-edition-item [edition]="edition"></app-survey-edition-item>
       }
     </div>
   } @else {

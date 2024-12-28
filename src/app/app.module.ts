@@ -13,6 +13,7 @@ import {AppRoutingModule} from './app.routes';
 import {HttpClientModule} from '@angular/common/http';
 import {ChapterComponent} from './features/components/chapter/chapter/chapter.component';
 import {ButtonComponent} from './shared/button/button.component';
+import {CommonModule} from '@angular/common';
 
 
 
@@ -29,12 +30,10 @@ import {ButtonComponent} from './shared/button/button.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ButtonComponent
+    ButtonComponent,
+    CommonModule
   ],
   providers: [
-
-
   ],
   bootstrap: [AppComponent]
 })
