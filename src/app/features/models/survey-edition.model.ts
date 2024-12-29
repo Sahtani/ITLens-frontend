@@ -1,4 +1,5 @@
 import {Survey} from './survey.model';
+import {Chapter} from './chapter.model';
 
 
 export interface SurveyEdition{
@@ -6,5 +7,6 @@ export interface SurveyEdition{
   creationDate: Date;
   startDate: Date;
   year: Date;
+  chapters: Chapter[]
 
 }

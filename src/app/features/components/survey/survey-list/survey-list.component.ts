@@ -5,13 +5,14 @@ import { PageResponse } from '../../../../core/interfaces/pagination.interface';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 import {SurveyItemComponent} from '../survey-item/survey-item.component';
 import {CommonModule} from '@angular/common';
+import {SurveyTreeViewComponent} from '../survey-tree-view/survey-tree-view.component';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
   standalone: true,
-  imports: [CommonModule, SurveyItemComponent]
+  imports: [CommonModule, SurveyItemComponent, SurveyTreeViewComponent]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[] = [];
@@ -19,6 +20,13 @@ export class SurveyListComponent implements OnInit {
   pageSize = 3;
   totalPages = 0;
   totalElements = 0;
+
+  // variable pour edition selection :
+  selectedEdition: any = null;
+
+  onEditionSelected(edition: any) {
+    this.selectedEdition = edition;
+  }
 
   newSurvey: { owner: { name: string; id: number }; description: string; id: number; title: string } = {
     id: 0,

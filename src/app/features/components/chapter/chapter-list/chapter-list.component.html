@@ -1,0 +1,19 @@
+<div class="chapter-list">
+  <h2>Chapters</h2>
+  <button  class="add-button">Add Chapter</button>
+@if(chapters && chapters.length > 0) {
+  <div class="chapters">
+    @for (chapter of chapters ;track chapter.id) {
+    <app-chapter-item
+      *ngFor="let chapter of chapters"
+      [chapter]="chapter"
+
+    ></app-chapter-item>
+    }
+  </div>
+  } @else {
+  <div class="text-center py-8 text-gray-500">
+    <p>No chapters available</p>
+  </div>
+}
+</div>

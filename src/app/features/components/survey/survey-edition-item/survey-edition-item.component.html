@@ -1,4 +1,14 @@
-<button
+
+<div
+  (click)="onEditionClick()"
+  class="edition-item p-3 border rounded-md cursor-pointer hover:bg-gray-50"
+>
+  <h3 class="font-medium">{{ edition.year }}</h3>
+  <span class="text-sm text-gray-500">
+        {{ edition.chapters?.length || 0 }} chapters
+      </span>
+</div>
+<!--<button
   type="button"
   class="px-4 py-2 text-sm font-medium rounded-full
                    border border-gray-200
@@ -7,7 +17,7 @@
                    focus:outline-none focus:ring-2 focus:ring-gray-100
                    dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400
                    dark:hover:bg-gray-700 dark:hover:text-white
-                   dark:focus:ring-gray-700"
+                   dark:focus:r ing-gray-700"
 >
   {{ edition.year }}
-</button>
+</button>-->

@@ -1,0 +1,7 @@
+.tree-view {
+  min-height: 100vh;
+  background-color: white;
+}
+.chapter-item {
+  border-left: 2px solid #e5e7eb;
+}

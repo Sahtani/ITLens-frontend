@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {SurveyEdition} from '../../../models/survey-edition.model';
 import {CommonModule} from '@angular/common';
 
@@ -11,4 +11,9 @@ import {CommonModule} from '@angular/common';
 })
 export class SurveyEditionItemComponent {
   @Input() edition!: SurveyEdition;
+  @Output() viewEdition = new EventEmitter<SurveyEdition>();
+
+  onEditionClick(): void {
+    this.viewEdition.emit(this.edition)
+  }
 }

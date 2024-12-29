@@ -2,51 +2,65 @@
   <h2 class="text-xl font-bold mb-4">List of Surveys</h2>
 
   @if (surveys && surveys.length > 0) {
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-      @for (survey of surveys; track survey.id) {
-        <app-survey-item
-          [survey]="survey"
-          (onAddSurvey)="addSurvey()"
-          (onDeleteSurvey)="deleteSurvey($event)"
-       />
-      }
-    </div>
+    @if (!selectedEdition) {
+      <div class="surveys-view grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        @for (survey of surveys; track survey.id) {
+          <app-survey-item
+            [survey]="survey"
+            (onAddSurvey)="addSurvey()"
+            (onDeleteSurvey)="deleteSurvey($event)"
+
+          />
+        }
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <button
+            [disabled]="currentPage === 0"
+            (click)="changePage(currentPage - 1)"
+            class="px-3 py-1 rounded border disabled:opacity-50"
+          >
+            Previous
+          </button>
+
+          @for (page of pages; track page) {
+            <button
+              [class.bg-blue-500]="page === currentPage"
+              [class.text-white]="page === currentPage"
+              (click)="changePage(page)"
+              class="px-3 py-1 rounded border"
+            >
+              {{ page + 1 }}
+            </button>
+          }
+
+          <button
+            [disabled]="currentPage === totalPages - 1"
+            (click)="changePage(currentPage + 1)"
+            class="px-3 py-1 rounded border disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+
+        <div class="text-center text-sm text-gray-600">
+          Page {{ currentPage + 1 }} of {{ totalPages }}
+          (Total: {{ totalElements }} items)
+        </div>
+      </div>
+    }
+
+    @if (selectedEdition) {
+      <app-survey-tree-view
+        [edition]="selectedEdition"
+        (back)="selectedEdition = null"
+      />
+    }
   } @else {
     <div class="text-center py-8 text-gray-500">
       <p>No surveys available</p>
     </div>
   }
-
-  <div class="flex items-center justify-center gap-2 mb-2">
-    <button
-      [disabled]="currentPage === 0"
-      (click)="changePage(currentPage - 1)"
-      class="px-3 py-1 rounded border disabled:opacity-50"
-    >
-      Previous
-    </button>
-
-    @for (page of pages; track page) {
-      <button
-        [class.bg-blue-500]="page === currentPage"
-        [class.text-white]="page === currentPage"
-        (click)="changePage(page)"
-        class="px-3 py-1 rounded border"
-      >
-        {{ page + 1 }}
-      </button>
-    }
-
-    <button
-      [disabled]="currentPage === totalPages - 1"
-      (click)="changePage(currentPage + 1)"
-      class="px-3 py-1 rounded border disabled:opacity-50"
-    >
-      Next
-    </button>
-  </div>
-
-  <div class="text-center text-sm text-gray-600">
-    Page {{ currentPage + 1 }} of {{ totalPages }} (Total: {{ totalElements }} items)
-  </div>
 </div>

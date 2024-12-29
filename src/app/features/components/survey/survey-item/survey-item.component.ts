@@ -16,7 +16,14 @@ export class SurveyItemComponent {
   }
   @Output() onAddSurvey = new EventEmitter<void>();
   @Output() onDeleteSurvey = new EventEmitter<number>();
-
+/*  @Output() editionSelected = new EventEmitter<any>();
+  onViewEdition(edition: any): void {
+    this.editionSelected.emit(edition);
+  }*/
+  onEditionSelected(edition: any): void {
+    console.log('Selected Edition:', edition);
+    // Ajoutez une logique spécifique ici
+  }
   addSurvey(): void {
     this.onAddSurvey.emit();
   }
