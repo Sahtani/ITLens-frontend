@@ -5,14 +5,16 @@ import { PageResponse } from '../../../../core/interfaces/pagination.interface';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 import {SurveyItemComponent} from '../survey-item/survey-item.component';
 import {CommonModule} from '@angular/common';
-import {SurveyTreeViewComponent} from '../survey-tree-view/survey-tree-view.component';
+import {ChapterTreeViewComponent} from '../../chapter/chapter-tree-view/chapter-tree-view.component';
+import {SurveyEdition} from '../../../models/survey-edition.model';
+import {Chapter} from '../../../models/chapter.model';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
   standalone: true,
-  imports: [CommonModule, SurveyItemComponent, SurveyTreeViewComponent]
+  imports: [CommonModule, SurveyItemComponent, ChapterTreeViewComponent]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[] = [];
@@ -22,11 +24,8 @@ export class SurveyListComponent implements OnInit {
   totalElements = 0;
 
   // variable pour edition selection :
-  selectedEdition: any = null;
 
-  onEditionSelected(edition: any) {
-    this.selectedEdition = edition;
-  }
+
 
   newSurvey: { owner: { name: string; id: number }; description: string; id: number; title: string } = {
     id: 0,
@@ -37,12 +36,23 @@ export class SurveyListComponent implements OnInit {
       name: '',
     },
   };
-
+  selectedEdition: SurveyEdition | null = null;
   constructor(private surveyService: SurveyService) {}
+  get chapters(): Chapter[] {
+    return this.selectedEdition?.chapters || [];
+  }
+
 
   ngOnInit(): void {
     this.loadSurveys();
     console.log(this.surveys)
+  }
+  onEditionSelected(edition: SurveyEdition): void {
+    this.selectedEdition = edition;
+  }
+
+  backToSurveys(): void {
+    this.selectedEdition = null;
   }
 
   loadSurveys(): void {
@@ -93,6 +103,7 @@ export class SurveyListComponent implements OnInit {
       },
     };
   }*/
+  chapterTree: any;
   addSurvey(): void {
     console.log('Add survey clicked!');
   }

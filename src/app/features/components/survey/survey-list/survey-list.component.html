@@ -9,8 +9,8 @@
             [survey]="survey"
             (onAddSurvey)="addSurvey()"
             (onDeleteSurvey)="deleteSurvey($event)"
-
-          />
+            (editionSelected)="onEditionSelected($event)">
+          </app-survey-item>
         }
       </div>
 
@@ -20,8 +20,7 @@
           <button
             [disabled]="currentPage === 0"
             (click)="changePage(currentPage - 1)"
-            class="px-3 py-1 rounded border disabled:opacity-50"
-          >
+            class="px-3 py-1 rounded border disabled:opacity-50">
             Previous
           </button>
 
@@ -30,8 +29,7 @@
               [class.bg-blue-500]="page === currentPage"
               [class.text-white]="page === currentPage"
               (click)="changePage(page)"
-              class="px-3 py-1 rounded border"
-            >
+              class="px-3 py-1 rounded border">
               {{ page + 1 }}
             </button>
           }
@@ -39,8 +37,7 @@
           <button
             [disabled]="currentPage === totalPages - 1"
             (click)="changePage(currentPage + 1)"
-            class="px-3 py-1 rounded border disabled:opacity-50"
-          >
+            class="px-3 py-1 rounded border disabled:opacity-50">
             Next
           </button>
         </div>
@@ -50,13 +47,18 @@
           (Total: {{ totalElements }} items)
         </div>
       </div>
-    }
-
-    @if (selectedEdition) {
-      <app-survey-tree-view
-        [edition]="selectedEdition"
-        (back)="selectedEdition = null"
-      />
+    } @else {
+      <div>
+        <button
+          class="px-4 py-2 text-sm font-medium rounded-md bg-gray-200 hover:bg-gray-300"
+          (click)="backToSurveys()">
+          Back to Surveys
+        </button>
+        <app-survey-tree-view
+          [nodes]="selectedEdition.chapters || []"
+          [edition]="selectedEdition">
+        </app-survey-tree-view>
+      </div>
     }
   } @else {
     <div class="text-center py-8 text-gray-500">

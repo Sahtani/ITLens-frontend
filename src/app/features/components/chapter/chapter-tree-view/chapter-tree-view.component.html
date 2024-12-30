@@ -1,0 +1,41 @@
+<div class="tree-view p-4">
+  <!-- Header Section -->
+  <div class="flex items-center mb-4">
+
+    <h2 class="text-xl font-bold ml-4">{{ edition.year }}</h2>
+  </div>
+
+
+  <!-- Tree Structure -->
+  <div class="chapters-tree mt-4">
+    @for (chapter of nodes; track chapter.id) {
+      <div class="chapter-container border-l-2 border-gray-200">
+        <!-- Chapter Level -->
+        <div class="chapter-item pl-4">
+          <div class="flex items-center py-2 hover:bg-gray-50 rounded">
+            <span
+              [class.rotate-90]="expandedChapters[chapter.id]"
+              class="transform transition-transform duration-200 mr-2 cursor-pointer text-gray-600"
+              (click)="toggleChapter(chapter.id)"
+            >
+              ▶
+            </span>
+            <span class="font-medium text-gray-800">{{ chapter.title }}</span>
+          </div>
+
+          <!-- SubChapters Level -->
+          @if (expandedChapters[chapter.id] && chapter.subChapters) {
+            <div class="sub-chapters ml-6 border-l-2 border-gray-100">
+              @for (subChapter of chapter.subChapters; track subChapter.id) {
+                <div class="py-2 pl-4 hover:bg-gray-50 rounded flex items-center">
+                  <span class="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
+                  <span class="text-gray-700">{{ subChapter.title }}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

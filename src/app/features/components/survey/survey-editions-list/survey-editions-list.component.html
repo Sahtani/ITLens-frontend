@@ -3,7 +3,7 @@
     <div class="flex flex-wrap gap-2">
       @for (edition of editions; track edition.id) {
         <app-survey-edition-item [edition]="edition"
-                                 (viewEdition)="onEditionSelected($event)"
+                                 (click)="onEditionSelected(edition)"
         ></app-survey-edition-item>
       }
     </div>

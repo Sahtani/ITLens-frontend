@@ -14,6 +14,6 @@ export class SurveyEditionItemComponent {
   @Output() viewEdition = new EventEmitter<SurveyEdition>();
 
   onEditionClick(): void {
-    this.viewEdition.emit(this.edition)
+    this.viewEdition.emit(this.edition);
   }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SurveyTreeViewComponent } from './survey-tree-view.component';
+import { ChapterTreeViewComponent } from './chapter-tree-view.component';
 
 describe('SurveyTreeViewComponent', () => {
-  let component: SurveyTreeViewComponent;
-  let fixture: ComponentFixture<SurveyTreeViewComponent>;
+  let component: ChapterTreeViewComponent;
+  let fixture: ComponentFixture<ChapterTreeViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SurveyTreeViewComponent]
+      imports: [ChapterTreeViewComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SurveyTreeViewComponent);
+    fixture = TestBed.createComponent(ChapterTreeViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

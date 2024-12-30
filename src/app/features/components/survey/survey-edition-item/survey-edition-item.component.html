@@ -3,9 +3,9 @@
   (click)="onEditionClick()"
   class="edition-item p-3 border rounded-md cursor-pointer hover:bg-gray-50"
 >
-  <h3 class="font-medium">{{ edition.year }}</h3>
+  <h3 class="font-medium hover:underline">{{ edition.year }}</h3>
   <span class="text-sm text-gray-500">
-        {{ edition.chapters?.length || 0 }} chapters
+        {{ edition.chapters.length || 0 }} View Chapters
       </span>
 </div>
 <!--<button
