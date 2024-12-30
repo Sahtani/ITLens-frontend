@@ -1,11 +1,17 @@
-<div class="chapter-item">
-  <div class="chapter-header">
-    <h3>{{ chapter.title }}</h3>
-  <!--  <span class="order" *ngIf="chapter.order">Order: {{ chapter.order }}</span>-->
-  </div>
-  <p *ngIf="chapter.title">{{ chapter.title }}</p>
-  <div class="chapter-actions">
-  <!--  <button (click)="onEdit()">Edit</button>
-    <button (click)="onDelete()">Delete</button>-->
+<div class="chapter-container  ">
+  <div class="chapter-item pl-4">
+    <div class="flex items-center py-2 hover:bg-gray-80 rounded">
+      <span
+        [class.rotate-90]="expanded"
+        class="transform transition-transform duration-200 mr-2 cursor-pointer text-gray-600"
+        (click)="toggle()"
+      >
+        ▶
+      </span>
+      <span class="font-medium text-gray-800">{{ chapter?.title }}</span>
+    </div>
+    <div *ngIf="expanded && chapter?.subChapters" class="sub-chapters ml-6 border-l-2 border-gray-100">
+      <app-chapter-item *ngFor="let subChapter of chapter?.subChapters" [chapter]="subChapter"></app-chapter-item>
+    </div>
   </div>
 </div>

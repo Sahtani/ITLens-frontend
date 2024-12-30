@@ -9,7 +9,7 @@
   <!-- Tree Structure -->
   <div class="chapters-tree mt-4">
     @for (chapter of nodes; track chapter.id) {
-      <div class="chapter-container border-l-2 border-gray-200">
+      <div class="chapter-container ">
         <!-- Chapter Level -->
         <div class="chapter-item pl-4">
           <div class="flex items-center py-2 hover:bg-gray-50 rounded">
@@ -25,11 +25,11 @@
 
           <!-- SubChapters Level -->
           @if (expandedChapters[chapter.id] && chapter.subChapters) {
-            <div class="sub-chapters ml-6 border-l-2 border-gray-100">
+            <div class="sub-chapters ml-6 ">
               @for (subChapter of chapter.subChapters; track subChapter.id) {
-                <div class="py-2 pl-4 hover:bg-gray-50 rounded flex items-center">
-                  <span class="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
-                  <span class="text-gray-700">{{ subChapter.title }}</span>
+                <div class="sub-chapters ml-6 border-l-2 border-gray-100">
+                  <app-chapter-item [chapter]="subChapter"></app-chapter-item>
+
                 </div>
               }
             </div>
@@ -39,3 +39,6 @@
     }
   </div>
 </div>
+
+
+

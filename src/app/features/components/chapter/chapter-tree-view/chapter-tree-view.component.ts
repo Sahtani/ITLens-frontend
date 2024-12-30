@@ -2,10 +2,11 @@ import {Component, EventEmitter, Input, numberAttribute, Output} from '@angular/
 import {CommonModule} from '@angular/common';
 import {SurveyEdition} from '../../../models/survey-edition.model';
 import {Chapter} from '../../../models/chapter.model';
+import {ChapterItemComponent} from '../chapter-item/chapter-item.component';
 
 @Component({
   selector: 'app-survey-tree-view',
-  imports: [CommonModule],
+  imports: [CommonModule,ChapterItemComponent],
   templateUrl: './chapter-tree-view.component.html',
   standalone: true,
   styleUrl: './chapter-tree-view.component.css'

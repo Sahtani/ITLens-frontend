@@ -10,6 +10,12 @@ import {Chapter} from '../../../models/chapter.model';
   styleUrl: './chapter-item.component.css'
 })
 export class ChapterItemComponent {
-  @Input() chapter!: Chapter;
+  @Input() chapter: Chapter | undefined;
+  expanded: boolean = false;
+
+  toggle(): void {
+    this.expanded = !this.expanded;
+  }
+
 
 }
