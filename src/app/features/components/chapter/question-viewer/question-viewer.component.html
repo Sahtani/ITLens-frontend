@@ -1,0 +1,23 @@
+<!--
+<div *ngIf="chapter && showQuestionList; else noChapterSelected" class="questions mt-4">
+  <app-question-list [questions]="chapter?.questions"></app-question-list>
+</div>
+<ng-template #noChapterSelected>
+  <p>Select a chapter to view its questions.</p>
+</ng-template>
+-->
+<div class="card-container p-4">
+  <ng-container *ngIf="selectedChapter">
+    <h2>{{ selectedChapter.title }}</h2>
+    <div class="question-list">
+      <!-- Option 1: Si vous voulez utiliser app-question-list -->
+      <app-question-list [questions]="selectedChapter.questions"></app-question-list>
+
+      <!-- OU Option 2: Si vous voulez faire la boucle directement ici -->
+      <!-- <div *ngFor="let question of selectedChapter.questions" class="question-item">
+        <h3>{{ question.title }}</h3>
+        <p>{{ question.content }}</p>
+    </div> -->
+</div>
+</ng-container>
+</div>

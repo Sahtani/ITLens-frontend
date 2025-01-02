@@ -1,0 +1,22 @@
+.question-list {
+  margin: 20px;
+
+  .questions-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      background-color: #f4f4f4;
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+      font-weight: bold;
+    }
+  }
+
+  .no-questions {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+}

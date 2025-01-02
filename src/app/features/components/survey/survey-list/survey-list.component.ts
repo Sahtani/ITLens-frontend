@@ -5,16 +5,20 @@ import { PageResponse } from '../../../../core/interfaces/pagination.interface';
 import { ButtonComponent } from '../../../../shared/button/button.component';
 import {SurveyItemComponent} from '../survey-item/survey-item.component';
 import {CommonModule} from '@angular/common';
-import {ChapterTreeViewComponent} from '../../chapter/chapter-tree-view/chapter-tree-view.component';
+import {
+  ChapterTreeViewComponent,
+} from '../../chapter/chapter-tree-view/chapter-tree-view.component';
 import {SurveyEdition} from '../../../models/survey-edition.model';
 import {Chapter} from '../../../models/chapter.model';
+import {QuestionListComponent} from '../../chapter/question-list/question-list.component';
+import {QuestionViewerComponent} from '../../chapter/question-viewer/question-viewer.component';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
   standalone: true,
-  imports: [CommonModule, SurveyItemComponent, ChapterTreeViewComponent]
+  imports: [CommonModule, SurveyItemComponent, ChapterTreeViewComponent, QuestionListComponent, QuestionViewerComponent]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[] = [];
@@ -22,10 +26,6 @@ export class SurveyListComponent implements OnInit {
   pageSize = 3;
   totalPages = 0;
   totalElements = 0;
-
-  // variable pour edition selection :
-
-
 
   newSurvey: { owner: { name: string; id: number }; description: string; id: number; title: string } = {
     id: 0,
@@ -41,8 +41,11 @@ export class SurveyListComponent implements OnInit {
   get chapters(): Chapter[] {
     return this.selectedEdition?.chapters || [];
   }
+  selectedChapter: any = null;
 
-
+  onChapterSelected(chapter: any) {
+    this.selectedChapter = chapter;
+  }
   ngOnInit(): void {
     this.loadSurveys();
     console.log(this.surveys)

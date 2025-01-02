@@ -4,8 +4,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PageResponse} from '../../core/interfaces/pagination.interface';
-import {Subject} from '../../subject.model';
 import {Survey} from '../models/survey.model';
+import {Chapter} from '../models/chapter.model';
 @Injectable({
   providedIn: "root"
 })
@@ -14,16 +14,16 @@ export class ChapterService {
   private readonly apiUrl = `${environment.apiUrl}/subjects`;
   constructor(private http: HttpClient) {}
 
-  getSubjectsByEdition(page: number = 0, size: number = 3): Observable<PageResponse<Subject>> {
+  getSubjectsByEdition(page: number = 0, size: number = 3): Observable<PageResponse<Chapter>> {
     const url = `${this.apiUrl}?page=${page}&size=${size}`;
-    return this.http.get<PageResponse<Subject>>(url);
+    return this.http.get<PageResponse<Chapter>>(url);
   }
-  createSubject(subject: Omit<Subject, 'id'>): Observable<Subject> {
-    return this.http.post<Subject>(this.apiUrl, subject);
+  createSubject(subject: Omit<Chapter, 'id'>): Observable<Chapter> {
+    return this.http.post<Chapter>(this.apiUrl, subject);
   }
 
-  updateSubject(id: number, subject: Partial<Subject>): Observable<Subject> {
-    return this.http.put<Subject>(`${this.apiUrl}/${id}`, subject);
+  updateSubject(id: number, subject: Partial<Chapter>): Observable<Chapter> {
+    return this.http.put<Chapter>(`${this.apiUrl}/${id}`, subject);
   }
 
   deleteSubject(id: number): Observable<void> {

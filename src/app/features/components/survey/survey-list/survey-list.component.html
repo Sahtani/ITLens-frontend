@@ -54,11 +54,20 @@
           (click)="backToSurveys()">
           Back to Surveys
         </button>
-        <app-survey-tree-view
-          [nodes]="selectedEdition.chapters || []"
-          [edition]="selectedEdition">
-        </app-survey-tree-view>
+        <div class="page-container flex">
+          <div class="chapter-tree-container w-1/2 border-r-2 border-gray-200 p-4">
+            <app-survey-tree-view
+              [nodes]="selectedEdition.chapters || []"
+              [edition]="selectedEdition">
+            </app-survey-tree-view>
+          </div>
+          <div class="question-viewer-container w-1/2 p-4">
+            <app-question-viewer [chapter]="selectedChapter"></app-question-viewer>
+          </div>
+
+        </div>
       </div>
+
     }
   } @else {
     <div class="text-center py-8 text-gray-500">
