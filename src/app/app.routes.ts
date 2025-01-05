@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SurveyListComponent} from './features/components/survey/survey-list/survey-list.component';
+import {SurveyListComponent} from './features/survey/components/survey/survey-list/survey-list.component';
 import {
   SurveyEditionItemComponent
-} from './features/components/survey/survey-edition-item/survey-edition-item.component';
+} from './features/survey/components/survey/survey-edition-item/survey-edition-item.component';
 
 export const routes: Routes = [
   { path: '', component: SurveyListComponent },

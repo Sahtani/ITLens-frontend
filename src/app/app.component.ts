@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SurveyListComponent } from './features/components/survey/survey-list/survey-list.component';
+import { SurveyListComponent } from './features/survey/components/survey/survey-list/survey-list.component';
 
 @Component({
   selector: 'app-root',
