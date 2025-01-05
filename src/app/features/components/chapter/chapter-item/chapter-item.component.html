@@ -4,9 +4,9 @@
     <div class="flex items-center py-2 hover:bg-gray-50 rounded">
       <!-- Icône pour étendre ou réduire -->
       <span
+        (click)="toggle()"
         [class.rotate-90]="expanded"
         class="transform transition-transform duration-200 mr-2 cursor-pointer text-gray-600"
-        (click)="toggle()"
       >
         ▶
       </span>
@@ -14,9 +14,9 @@
       <!-- Titre du chapitre -->
       <span class="font-medium text-gray-800">{{ chapter?.title }}</span>
 
-     <div class="flex items-center justify-end ">
-       <button class="ml-2 text-blue-500 hover:underline" (click)="showQuestions()">Show Questions</button>
-     </div>
+      <div class="flex items-center justify-end ">
+        <button (click)="showQuestions()" class="ml-2 text-blue-500 hover:underline">Show Questions</button>
+      </div>
 
     </div>
 

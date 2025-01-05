@@ -1,5 +1,15 @@
-<tr class="question-row">
-  <td>{{ question.id }}</td>
-  <td>{{ question.text }}</td>
-  <td>{{ question.type }}</td>
-</tr>
+
+  <td class="p-2">{{ question.id }}</td>
+  <td class="p-2">{{ question.text }}</td>
+  <td class="p-2">{{ question.type }}</td>
+  <td class="p-2">
+    <button
+      (click)="toggleAnswers()"
+      class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+    >
+      {{ isSelected ? 'Hide Answers' : 'Show Answers' }}
+    </button>
+  </td>
+
+
+
