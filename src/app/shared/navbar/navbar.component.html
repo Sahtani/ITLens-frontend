@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a href="/" class="brand-logo">{{ brandName }}</a>
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <span [class.active]="isMobileMenuOpen">☰</span>
+    </button>
+  </div>
+
+  <div class="nav-links" [class.active]="isMobileMenuOpen">
+    <ng-container *ngFor="let item of menuItems">
+      <a [href]="item.path"
+         class="nav-link"
+         [routerLink]="item.path"
+         routerLinkActive="active">
+        <i *ngIf="item.icon" [class]="item.icon"></i>
+        {{ item.label }}
+      </a>
+    </ng-container>
+  </div>
+</nav>

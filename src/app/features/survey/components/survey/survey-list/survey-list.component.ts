@@ -12,13 +12,16 @@ import {SurveyEdition} from '../../../models/survey-edition.model';
 import {Chapter} from '../../../models/chapter.model';
 import {QuestionListComponent} from '../../chapter/question-list/question-list.component';
 import {QuestionViewerComponent} from '../../chapter/question-viewer/question-viewer.component';
+import {NavbarComponent} from '../../../../../shared/navbar/navbar.component';
+import {RouterOutlet} from '@angular/router';
+import {MenuItem} from '../../../../../shared/models/menu-item.interface';
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
   styleUrls: ['./survey-list.component.css'],
   standalone: true,
-  imports: [CommonModule, SurveyItemComponent, ChapterTreeViewComponent, QuestionListComponent, QuestionViewerComponent]
+  imports: [CommonModule, SurveyItemComponent, ChapterTreeViewComponent, QuestionListComponent, QuestionViewerComponent, NavbarComponent, RouterOutlet]
 })
 export class SurveyListComponent implements OnInit {
   surveys: Survey[] = [];

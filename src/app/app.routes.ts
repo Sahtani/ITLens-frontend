@@ -8,6 +8,9 @@ import {
 export const routes: Routes = [
   { path: '', component: SurveyListComponent },
   { path: 'survey-edition/:id', component: SurveyEditionItemComponent }
+
+
+
 ];
 
 @NgModule({
